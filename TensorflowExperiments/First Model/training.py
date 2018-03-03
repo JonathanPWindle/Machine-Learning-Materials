@@ -39,6 +39,7 @@ yScaledTest = yScaler.transform(yTest)
 ########################################################################################################################
 
 # Define model parameters
+runName = "Run 3 with 20 nodes"
 learningRate = 0.001
 learningEpochs = 100
 displayStep = 5
@@ -132,8 +133,8 @@ with tf.Session() as session:
     session.run(tf.global_variables_initializer())
 
     # Create the files for logging to tensorboard
-    trainingWriter = tf.summary.FileWriter("./logs/training", session.graph)
-    testingWriter = tf.summary.FileWriter("./logs/testing", session.graph)
+    trainingWriter = tf.summary.FileWriter("./logs/{}/training".format(runName), session.graph)
+    testingWriter = tf.summary.FileWriter("./logs/{}/testing".format(runName), session.graph)
 
     # Run the training loop, each epoch is one run through the training data set
     for epoch in range(learningEpochs):

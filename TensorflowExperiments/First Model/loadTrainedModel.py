@@ -39,6 +39,7 @@ yScaledTest = yScaler.transform(yTest)
 ########################################################################################################################
 
 # Define model parameters
+runName = "Run 1 with 50 nodes"
 learningRate = 0.001
 learningEpochs = 100
 displayStep = 5
@@ -137,4 +138,4 @@ with tf.Session() as session:
     print("Final Training Cost: {}", format(finalTrainingCost))
     print("Final Testing Cost: {}", format(finalTestingCost))
 
-    savePath = saver.save(session, "./logs/trainedModel.ckpt")
+    savePath = saver.save(session, "./logs/{}/trainedModel.ckpt".format(runName))
